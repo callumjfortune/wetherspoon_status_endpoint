@@ -1,27 +1,23 @@
 import './App.css';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function App() {
 
   const [times, setTimes] = useState("")
 
-  useEffect(() => {
-
-    fetch("https://static.wsstack.nn4maws.net/v1/delivery/en_gb/7090.json")
-    .then((res) => {
-      return res.json();
-    })
-    .then((res) => {
-      setTimes(res)
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-      throw new Error(err);
-    })
-
-  }, [])
+  fetch("https://static.wsstack.nn4maws.net/v1/delivery/en_gb/7090.json")
+  .then((res) => {
+    return res.json();
+  })
+  .then((res) => {
+    setTimes(res)
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+    throw new Error(err);
+  })
 
   return (
     <div className="App w-screen h-screen grid place-content-center">

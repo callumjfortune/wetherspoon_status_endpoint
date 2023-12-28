@@ -1,8 +1,48 @@
 import './App.css';
 
+import { useState, useEffect } from 'react';
+
 function App() {
+
+  const [times, setTimes] = useState("")
+
+  useEffect(() => {
+
+    fetch("https://static.wsstack.nn4maws.net/v1/delivery/en_gb/7090.json")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      setTimes(res)
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error(err);
+    })
+
+  }, [])
+
   return (
-    <div className="App">
+    <div className="App w-screen h-screen grid place-content-center">
+
+      <div className=''>
+
+        <h1 className='mb-2 text-[2em] font-[500]'>The George Inn</h1>
+        <h2 className='mb-8 text-[1.4em] text-gray-600'>is currently achieving the following times</h2>
+
+        <div className='flex items-center justify-around'>
+          <div>
+            <h1 className='text-[1.2em] mb-2'>Food</h1>
+            <h1>{times !== "" ? JSON.stringify(times.seconds.food/60) + " Mins" : "Loading"}</h1>
+          </div>
+          <div>
+            <h1 className='text-[1.2em] mb-2'>Drinks</h1>
+            <h1>{times !== "" ? JSON.stringify(times.seconds.drinks/60) + " Mins" : "Loading"}</h1>
+          </div>
+        </div>
+
+      </div>
       
     </div>
   );

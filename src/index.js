@@ -15,11 +15,11 @@ fetch("https://static.wsstack.nn4maws.net/v1/delivery/en_gb/7090.json")
   data = res
   console.log(res);
 
-  setTimeout(root.render(
+  root.render(
     <React.StrictMode>
       <App timeData={data} />
     </React.StrictMode>
-  ), 5000)
+  )
 
 })
 .catch((err) => {

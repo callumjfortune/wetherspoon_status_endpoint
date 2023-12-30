@@ -1,4 +1,4 @@
- # The George Inn waiting times shortcut
+ # The George Inn waiting times iPhone shortcut/automation
 
 This shortcut is designed to ping my server at *https://wetherspoon-status.netlify.app*
 
